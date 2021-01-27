@@ -30,9 +30,12 @@ if __name__ == "__main__":
 
             for v in quasi[max_column_name].unique():
                 status, result = dgh[max_column_name].next_gen(str(v))
-                quasi.replace(v, result,inplace=True) 
-        
-        quasi.to_csv(FILE_RESULT,index = False)
+                quasi.replace(v, result,inplace=True)
+
+        # Save file
+        if os.path.exists(FILE_RESULT):
+            os.remove(FILE_RESULT)
+        quasi.to_csv(FILE_RESULT, index = False)
 
     # Calc precision metric
     for c in QUASI_FIELDS:

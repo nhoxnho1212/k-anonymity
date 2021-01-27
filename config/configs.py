@@ -6,7 +6,7 @@ DIR_HIERARCHY = 'config/'
 POSTFIX = '_hierarchy'
 FILE_EXTENSION = '.txt'
 
-QUASI_FIELDS = ['age', 'race' ,'marital.status', 'sex']
+QUASI_FIELDS = ['age', 'marital.status', 'race' ,'sex']
 
 K = 2
 

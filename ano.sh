@@ -21,7 +21,8 @@ fi
 # Defin environment variables...
 export APP_SERVICE=${APP_SERVICE:-"k-anonymity-app"}
 export K=${K:-2}
-
+export DATA_SOURCE=${DATA_SOURCE}
+export RETURN_SOURCE=${RETURN_SOURCE}
 
 # Ensure that Docker is running...
 if ! docker info > /dev/null 2>&1; 
@@ -50,16 +51,18 @@ if [ $# -gt 0 ]; then
     # Proxy run commands
     elif [ "$1" == "run" ]; then
         shift 1
-        while getopts k:h: option
+        while getopts k:d:r:h: option
         do
             case "${option}"
             in
                 k) K=${OPTARG};;
+                d) DATA_SOURCE=${OPTARG};;
+                r) RETURN_SOURCE=${OPTARG};;
                 *)
             esac
         done
         
-        docker run --rm -it -e K="$K" -v $(pwd):/k-anonymity "$APP_SERVICE" 
+        docker run --rm -it -e K="$K" -e DATA_SOURCE="$DATA_SOURCE" -e RETURN_SOURCE="$RETURN_SOURCE" -v $(pwd):/k-anonymity "$APP_SERVICE" 
         
     
     # Pass unknown commands

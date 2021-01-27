@@ -1,12 +1,22 @@
 # k-anonymity
 
-> ``` $K``` is k anonymity
+> $K is k anonymity
+>
+> $DATA_SOURCE is data source path
+>
+> $RETURN_SOURCE is return data source path
 
 ## Run
 
 ```shell
-python3 main.py -k $K
+python3 main.py
 ```
+
+## Parameter options
+
+- `-k` : K anonymity
+- `-d`: data source path
+- `-r`: return data source path
 
 ## Run with Docker via "ano" CLI support
 
@@ -24,18 +34,18 @@ python3 main.py -k $K
 
 By default $K = 2
 
-You can use parameter k in commands or `.env` file
+## Environment file
 
-```shell
-./ano run -k $K
-```
+You can use parameters in commands or `.env` file
 
 ```shell
 # .env
 K=$K
+DATA_SOURCE=$DATA_SOURCE
+RETURN_SOURCE=$RETURN_SOURCE
 ```
 
 ## Result
 
-Result csv file will store in `./result/` directory with pattern `adult_$K.csv`.
+Result csv file will store in `./result/` directory with pattern `adult_$K.csv` or custom parameter.
 
